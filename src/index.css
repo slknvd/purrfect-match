@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #F4EDE1;
-  --color-paper: #FBF6EC;
+  --color-cream: #F6F1E7;
+  --color-paper: #FCF9F2;
+  --color-ink: #2B2925;
+  --color-charcoal: #43403A;
   --color-terracotta: #D97D54;
-  --color-forest: #2E3B2E;
-  --color-matcha: #A8C09A;
+  --color-peach: #F2C4A8;
+  --color-sage: #A8C09A;
+  --color-lavender: #C9C3E3;
   --color-gold: #E8B84B;
-  --color-blush: #F2C6C2;
-  --color-ink: #3A3630;
+  --color-gbgreen: #9BBC0F;
   --font-pixel: 'Press Start 2P', monospace;
 }
 
@@ -17,15 +19,23 @@ body {
   color: var(--color-ink);
 }
 
-/* cozy console frame: soft warm scanlines, gentle glow, no harsh glitch */
+::selection { background: var(--color-peach); color: var(--color-ink); }
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--color-terracotta);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
 .console-frame {
   position: relative;
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--color-paper);
   box-shadow:
-    0 0 0 10px #E4D5BC,
-    0 0 0 14px #C9B896,
-    0 12px 40px rgba(58, 54, 48, 0.25);
+    0 0 0 8px #E8DCC6,
+    0 0 0 12px #CBBB9B,
+    0 0 0 13px rgba(43, 41, 37, 0.15),
+    0 16px 48px rgba(43, 41, 37, 0.22);
   overflow: hidden;
 }
 
@@ -36,10 +46,10 @@ body {
   pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(58, 54, 48, 0.035) 0px,
-    rgba(58, 54, 48, 0.035) 1px,
+    rgba(43, 41, 37, 0.03) 0px,
+    rgba(43, 41, 37, 0.03) 1px,
     transparent 1px,
-    transparent 4px
+    transparent 5px
   );
 }
 
@@ -49,11 +59,24 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(ellipse at center, transparent 62%, rgba(217, 125, 84, 0.10) 100%);
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(217, 125, 84, 0.09) 100%);
 }
 
 @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 .blink { animation: blink 1.1s steps(1) infinite; }
 
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-.float { animation: float 2.4s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.float { animation: float 2.6s ease-in-out infinite; }
+
+@keyframes powerOn {
+  0% { opacity: 0; transform: scaleY(0.005) scaleX(0.6); }
+  35% { opacity: 1; transform: scaleY(0.005) scaleX(1); }
+  60% { transform: scaleY(1) scaleX(1); }
+  75% { opacity: 0.6; }
+  100% { opacity: 1; transform: scale(1); }
+}
+.power-on { animation: powerOn 0.9s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .blink, .float, .power-on { animation: none; }
+}
