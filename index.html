@@ -1,15 +1,23 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>purrfect-match</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purrfect Match</title>
+<meta name="description" content="A personality test that matches you with one of ten cats from the I am alive shelter in Astana.">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="day">
+<div id="room" aria-hidden="false"><img class="bg d" src="img/room_day.png" alt=""><img class="bg n" src="img/room_night.png" alt=""></div>
+<div id="dim"></div>
+<header>
+  <button class="chip logo" data-go="home"><img src="img/paw.png" alt="">Purrfect Match</button>
+  <nav><button class="chip" data-go="cats" data-t="navCats"></button><button class="chip" data-go="how" data-t="navHow"></button>
+  <button class="chip" id="theme"></button><button class="chip" id="lang"></button></nav>
+</header>
+<main id="view"></main>
+<canvas id="fx" aria-hidden="true"></canvas>
+<script type="module" src="app.js"></script>
+</body>
 </html>
